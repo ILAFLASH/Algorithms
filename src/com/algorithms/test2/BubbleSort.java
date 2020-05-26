@@ -10,6 +10,22 @@ class ArrayBub {
         nElems = 0; // Пока нет ни одного элемента
     }
 
+    public long[] getA() {
+        return a;
+    }
+
+    public void setA(long[] a) {
+        this.a = a;
+    }
+
+    public int getnElems() {
+        return nElems;
+    }
+
+    public void setnElems(int nElems) {
+        this.nElems = nElems;
+    }
+
     public void insert(long value) // Вставка элемента в массив
     {
         a[nElems] = value; // Собственно вставка
@@ -40,21 +56,17 @@ class ArrayBub {
 
 class BubbleSort {
     public static void main(String[] args) {
-        int maxSize = 100; // Размер массива
+        int maxSize = 100_000; // Размер массива
         ArrayBub arr; // Ссылка на массив
         arr = new ArrayBub(maxSize); // Создание массива
-        arr.insert(77); // Вставка 10 элементов
-        arr.insert(99);
-        arr.insert(44);
-        arr.insert(55);
-        arr.insert(22);
-        arr.insert(88);
-        arr.insert(11);
-        arr.insert(00);
-        arr.insert(66);
-        arr.insert(33);
+        for (int i = 0; i < maxSize ; i++) {
+            arr.insert((long) (Math.random() * (maxSize - 1)));
+        }
         arr.display(); // Вывод элементов
+        long start = System.currentTimeMillis();
         arr.bubbleSort(); // Пузырьковая сортировка элементов
+        long end = System.currentTimeMillis();
+        System.out.println("Время сортировки 100_000 элементов методом пузырька: " + (end - start));
         arr.display(); // Повторный вывод
     } //
 } // Конец класса BubbleSort

@@ -45,21 +45,17 @@ class ArraySel {
 
 class SelectionSort {
     public static void main(String[] args) {
-        int maxSize = 100; // Размер массива
+        int maxSize = 100_000; // Размер массива
         ArraySel arr; // Ссылка на массив
         arr = new ArraySel(maxSize); // Создание массива
-        arr.insert(99); // Вставка 10 элементов
-        arr.insert(77);
-        arr.insert(55);
-        arr.insert(44);
-        arr.insert(22);
-        arr.insert(88);
-        arr.insert(11);
-        arr.insert(00);
-        arr.insert(66);
-        arr.insert(33);
+        for (int i = 0; i < maxSize ; i++) {
+            arr.insert((long) (Math.random() * (maxSize - 1)));
+        }
         arr.display(); // Вывод элементов
+        long start = System.currentTimeMillis();
         arr.selectionSort(); // сортировка элементов методом выбора
+        long end = System.currentTimeMillis();
+        System.out.println("Время сортировки 100_000 элементов методом выбора : " + (end - start));
         arr.display(); // Повторный вывод
     } //
 } // Конец класса SelectionSort
